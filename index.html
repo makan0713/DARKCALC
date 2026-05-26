@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DARKCALC</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+
+<style>
+body{
+  margin:0;
+  font-family:system-ui;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  background:#050505;
+  color:white;
+}
+
+.app{
+  width:390px;
+  padding:16px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(20px);
+}
+
+.logo{
+  text-align:center;
+  font-weight:900;
+  letter-spacing:6px;
+  margin-bottom:10px;
+}
+
+#screen{
+  height:100px;
+  background:black;
+  border-radius:18px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:flex-end;
+  padding:16px;
+  font-size:52px;
+  margin-bottom:10px;
+}
+
+.row{
+  display:flex;
+  gap:8px;
+  margin-bottom:10px;
+}
+
+button{
+  flex:1;
+  height:42px;
+  border:none;
+  border-radius:12px;
+  background:#1f1f1f;
+  color:white;
+  font-size:12px;
+}
+
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.buttons button{
+  height:70px;
+  font-size:20px;
+  border-radius:18px;
+}
+
+button:active{transform:scale(0.92)}
+
+.op{
+  background:white;
+  color:black;
+}
+
+canvas{
+  margin-top:10px;
+  background:#111;
+  border-radius:12px;
+  display:none;
+  width:100%;
+}
+
+.history{
+  margin-top:10px;
+  max-height:140px;
+  overflow:auto;
+}
+
+.historyItem{
+  background:#1a1a1a;
+  padding:8px;
+  margin-top:6px;
+  border-radius:10px;
+  font-size:13px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="logo">DARKCALC</div>
+
+<div id="screen">0</div>
+
+<div class="row">
+<button onclick="setMode('basic')">Basic</button>
+<button onclick="setMode('scientific')">Scientific</button>
+<button onclick="toggleGraph()">Graph</button>
+</div>
+
+<div class="buttons" id="buttons"></div>
+
+<canvas id="graph" width="340" height="160"></canvas>
+
+<div class="history">
+<h3>History</h3>
+<div id="historyList"></div>
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
