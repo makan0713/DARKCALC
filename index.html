@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DARKCALC AI PRO</title>
+
+<link rel="manifest" href="manifest.json"/>
+
+<style>
+body{
+  margin:0;
+  font-family:system-ui;
+  background:#0b0b0b;
+  color:white;
+}
+
+.app{
+  width:390px;
+  margin:auto;
+  padding:16px;
+}
+
+.logo{
+  text-align:center;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+/* screen */
+#screen{
+  height:90px;
+  background:#111;
+  border-radius:16px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:flex-end;
+  padding:14px;
+  font-size:42px;
+}
+
+/* buttons */
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+button{
+  height:65px;
+  border:none;
+  border-radius:14px;
+  background:#1f1f1f;
+  color:white;
+  font-size:18px;
+}
+
+/* VAULT OVERLAY (GOD MODE) */
+#vaultOverlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  flex-direction:column;
+  padding:20px;
+}
+
+#vaultBox{
+  margin-top:20px;
+}
+
+input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  width:100%;
+  margin-top:10px;
+}
+
+.file{
+  background:#222;
+  padding:10px;
+  margin-top:6px;
+  border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="logo">DARKCALC AI PRO</div>
+
+<div id="screen">0</div>
+
+<div class="buttons" id="buttons"></div>
+
+</div>
+
+<!-- VAULT GOD MODE -->
+<div id="vaultOverlay">
+
+<h2>🔐 VAULT GOD MODE</h2>
+
+<p id="status">Locked</p>
+
+<input id="pinInput" placeholder="Set / Enter PIN"/>
+
+<button onclick="setPIN()">Set PIN</button>
+<button onclick="unlock()">Unlock</button>
+
+<input type="file" id="fileInput"/>
+<button onclick="uploadFile()">Upload</button>
+
+<input id="search" placeholder="AI search vault"/>
+<button onclick="searchVault()">Search</button>
+
+<div id="vaultBox"></div>
+
+</div>
+
+<script src="app.js"></script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+
+</body>
+</html>
