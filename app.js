@@ -5,7 +5,7 @@ let graph = document.getElementById("graph");
 
 let mode = "basic";
 
-let history = JSON.parse(localStorage.getItem("dc")) || [];
+let history = JSON.parse(localStorage.getItem("dc_master")) || [];
 
 const basic = [
 "7","8","9","/",
@@ -71,7 +71,7 @@ function calc(){
     history.unshift(expr+" = "+result);
     history = history.slice(0,20);
 
-    localStorage.setItem("dc",JSON.stringify(history));
+    localStorage.setItem("dc_master",JSON.stringify(history));
 
     renderHistory();
     drawGraph(expr);
@@ -92,6 +92,30 @@ function renderHistory(){
   });
 }
 
+/* THEME */
+function setTheme(t){
+  const app=document.querySelector(".app");
+
+  if(t==="dark"){
+    document.body.style.background="#050505";
+    app.style.background="rgba(255,255,255,0.04)";
+    document.body.style.color="white";
+  }
+
+  if(t==="light"){
+    document.body.style.background="#eaeaea";
+    app.style.background="rgba(0,0,0,0.05)";
+    document.body.style.color="black";
+  }
+
+  if(t==="neon"){
+    document.body.style.background="#001111";
+    app.style.background="rgba(0,255,255,0.05)";
+    document.body.style.color="white";
+  }
+}
+
+/* GRAPH */
 function toggleGraph(){
   graph.style.display =
     graph.style.display==="block"?"none":"block";
