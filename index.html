@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DARKCALC AI PRO</title>
+
+<style>
+body{
+  margin:0;
+  font-family:system-ui;
+  background:#0b0b0b;
+  color:white;
+  transition:0.3s;
+}
+
+.app{
+  width:390px;
+  margin:auto;
+  padding:16px;
+}
+
+.logo{
+  text-align:center;
+  font-weight:900;
+  letter-spacing:5px;
+  margin:10px 0;
+}
+
+#screen{
+  height:90px;
+  background:#111;
+  border-radius:16px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:flex-end;
+  padding:14px;
+  font-size:42px;
+  overflow:hidden;
+}
+
+.row{
+  display:flex;
+  gap:8px;
+  margin:10px 0;
+}
+
+button{
+  flex:1;
+  height:42px;
+  border:none;
+  border-radius:10px;
+  background:#1f1f1f;
+  color:white;
+}
+
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.buttons button{
+  height:68px;
+  font-size:20px;
+  border-radius:16px;
+}
+
+.op{
+  background:white;
+  color:black;
+}
+
+#graph{
+  margin-top:10px;
+  background:#111;
+  border-radius:12px;
+  display:none;
+}
+
+#aiBox{
+  margin-top:12px;
+  background:#151515;
+  padding:10px;
+  border-radius:12px;
+}
+
+#aiInput{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  margin-top:8px;
+}
+
+/* THEMES */
+.light{
+  background:#eaeaea;
+  color:black;
+}
+.neon{
+  background:#001a1a;
+  color:#00ffff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="logo">DARKCALC AI</div>
+
+<div id="screen">0</div>
+
+<div class="row">
+<button onclick="setMode('basic')">Basic</button>
+<button onclick="setMode('science')">Scientific</button>
+<button onclick="toggleGraph()">Graph</button>
+</div>
+
+<div class="row">
+<button onclick="setTheme('dark')">Dark</button>
+<button onclick="setTheme('light')">Light</button>
+<button onclick="setTheme('neon')">Neon</button>
+</div>
+
+<div class="buttons" id="buttons"></div>
+
+<canvas id="graph" width="340" height="160"></canvas>
+
+<div id="aiBox">
+<b>AI Assistant</b>
+<input id="aiInput" placeholder="Ask something..." />
+<button onclick="askAI()">Ask AI</button>
+<div id="aiResult">Ready</div>
+</div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
